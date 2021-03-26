@@ -7,6 +7,6 @@ import java.util.Optional;
 public interface StorageService {
     void store(ImageMetadata metadata, byte[] data);
     void delete(ImageMetadata metadata);
-    Optional<byte[]> findImageByIndex(int index);
+    Optional<byte[]> findImageByIndex(long index);
     Optional<byte[]> findImageByName(String name);
 }

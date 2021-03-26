@@ -20,7 +20,7 @@ public class FileStorageService implements StorageService {
     }
 
     @Override
-    public Optional<byte[]> findImageByIndex(int index) {
+    public Optional<byte[]> findImageByIndex(long index) {
         return Optional.empty();
     }
 

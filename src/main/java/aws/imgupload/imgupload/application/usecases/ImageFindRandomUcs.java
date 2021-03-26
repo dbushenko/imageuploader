@@ -22,13 +22,13 @@ public class ImageFindRandomUcs implements HasFlows<byte[]> {
     @Override
     public byte[] mainFlow() {
         final var count = assertCount( metadataService.fetchImageCount() );
-        final var random = new Random().nextInt();
+        final var random = new Random().nextLong();
         final var index = random % count;
 
         return storageService.findImageByIndex(index).get();
     }
 
-    private int assertCount(int count) {
+    private long assertCount(long count) {
         if (count < 1) throw new IllegalArgumentException();
         else return count;
     }
