@@ -1,21 +1,19 @@
-package aws.imgupload.imgupload.service;
+package aws.imgupload.imgupload.service.prod;
 
+import aws.imgupload.imgupload.service.StorageService;
 import aws.imgupload.imgupload.service.data.ImageMetadata;
 
 import java.util.Optional;
 
-public class FileStorageService implements StorageService{
-
+public class S3StorageService implements StorageService {
     @Override
     public void store(ImageMetadata metadata, byte[] data) {
-        System.out.println("[FileStorageService] Storing data:");
-        System.out.println(metadata);
+
     }
 
     @Override
     public void delete(ImageMetadata metadata) {
-        System.out.println("[FileStorageService] Deleting data:");
-        System.out.println(metadata);
+
     }
 
     @Override

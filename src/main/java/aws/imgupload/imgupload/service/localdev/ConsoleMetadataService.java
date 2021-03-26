@@ -1,8 +1,9 @@
-package aws.imgupload.imgupload.service;
+package aws.imgupload.imgupload.service.localdev;
 
+import aws.imgupload.imgupload.service.MetadataService;
 import aws.imgupload.imgupload.service.data.ImageMetadata;
 
-public class ConsoleMetadataService implements MetadataService{
+public class ConsoleMetadataService implements MetadataService {
     @Override
     public void startRegister(ImageMetadata metadata) {
         System.out.println("[ConsoleMetadataService] Registering metadata:");
@@ -22,7 +23,7 @@ public class ConsoleMetadataService implements MetadataService{
     }
 
     @Override
-    public int fetchImageCount() {
+    public long fetchImageCount() {
         return 0;
     }
 }

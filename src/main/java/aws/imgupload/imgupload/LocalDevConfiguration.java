@@ -1,7 +1,7 @@
 package aws.imgupload.imgupload;
 
-import aws.imgupload.imgupload.service.ConsoleMetadataService;
-import aws.imgupload.imgupload.service.FileStorageService;
+import aws.imgupload.imgupload.service.localdev.ConsoleMetadataService;
+import aws.imgupload.imgupload.service.localdev.FileStorageService;
 import aws.imgupload.imgupload.service.MetadataService;
 import aws.imgupload.imgupload.service.StorageService;
 import org.springframework.context.annotation.Bean;

@@ -29,7 +29,7 @@ public class ImagesController {
 
     @PostMapping("/")
     public void postImage(@RequestParam MultipartFile file) throws IOException {
-        imageApp.uploadImage(file.getName(), file.getBytes());
+        imageApp.uploadImage(file.getOriginalFilename(), file.getBytes());
     }
 
 }

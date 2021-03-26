@@ -6,5 +6,5 @@ public interface MetadataService {
     void startRegister(ImageMetadata metadata);
     void commitRegister(ImageMetadata metadata);
     void rollbackRegister(ImageMetadata metadata);
-    int fetchImageCount();
+    long fetchImageCount();
 }

@@ -8,6 +8,8 @@ import aws.imgupload.imgupload.service.StorageService;
 import aws.imgupload.imgupload.service.data.ImageMetadata;
 import org.springframework.stereotype.Component;
 
+import java.io.File;
+
 @Component
 public class ImageApp {
     private final MetadataService metadataService;
@@ -18,8 +20,8 @@ public class ImageApp {
         this.storageService = storageService;
     }
 
-    public void uploadImage(String name, final byte[] image) {
-        new ImageUploadUcs(metadataService, storageService, new ImageMetadata(name), image)
+    public void uploadImage(String originalFileName, final byte[] image) {
+        new ImageUploadUcs(metadataService, storageService, new ImageMetadata(prepare(originalFileName)), image)
                 .run();
     }
 
@@ -31,5 +33,11 @@ public class ImageApp {
     public byte[] findImageByName(final String name) {
         return new ImageFindByNameUcs(metadataService, storageService, name)
                 .run();
+    }
+
+    ////
+    private String prepare(final String originalFileName) {
+        final var splitted = originalFileName.split("[\\/]]");
+        return splitted[splitted.length-1];
     }
 }
