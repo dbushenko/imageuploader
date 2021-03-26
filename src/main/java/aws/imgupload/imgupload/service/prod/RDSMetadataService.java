@@ -28,6 +28,7 @@ public class RDSMetadataService implements MetadataService {
     public void commitRegister(ImageMetadata metadata) throws NoSuchElementException {
         final var record = registerRepository.findByFilename(metadata.getFileName()).get();
         record.setCommitted(true);
+        registerRepository.save(record);
     }
 
     @Override
