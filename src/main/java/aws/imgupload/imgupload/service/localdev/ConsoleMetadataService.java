@@ -26,4 +26,9 @@ public class ConsoleMetadataService implements MetadataService {
     public long fetchImageCount() {
         return 0;
     }
+
+    @Override
+    public ImageMetadata fetchRecordByIndex(long index) {
+        return new ImageMetadata("super-image");
+    }
 }

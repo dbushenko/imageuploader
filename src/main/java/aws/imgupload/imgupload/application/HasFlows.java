@@ -1,7 +1,9 @@
 package aws.imgupload.imgupload.application;
 
+import java.io.IOException;
+
 public interface HasFlows<T> {
-    T mainFlow();
+    T mainFlow() throws IOException;
     T alternateFlows(Exception exception);
 
     default T run() {

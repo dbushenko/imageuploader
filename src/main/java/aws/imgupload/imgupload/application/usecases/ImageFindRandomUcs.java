@@ -5,6 +5,7 @@ import aws.imgupload.imgupload.service.MetadataService;
 import aws.imgupload.imgupload.service.StorageService;
 import org.springframework.util.Assert;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Random;
 
@@ -20,12 +21,13 @@ public class ImageFindRandomUcs implements HasFlows<byte[]> {
     }
 
     @Override
-    public byte[] mainFlow() {
+    public byte[] mainFlow() throws IOException {
         final var count = assertCount( metadataService.fetchImageCount() );
         final var random = new Random().nextLong();
         final var index = random % count;
+        final var data = metadataService.fetchRecordByIndex(index);
 
-        return storageService.findImageByIndex(index).get();
+        return storageService.findImageByName(data.getFileName()).get();
     }
 
     private long assertCount(long count) {

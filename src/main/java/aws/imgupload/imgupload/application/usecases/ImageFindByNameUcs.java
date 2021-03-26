@@ -5,6 +5,7 @@ import aws.imgupload.imgupload.service.MetadataService;
 import aws.imgupload.imgupload.service.StorageService;
 import org.springframework.util.Assert;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class ImageFindByNameUcs implements HasFlows<byte[]> {
@@ -21,7 +22,7 @@ public class ImageFindByNameUcs implements HasFlows<byte[]> {
     }
 
     @Override
-    public byte[] mainFlow() {
+    public byte[] mainFlow() throws IOException {
         return storageService.findImageByName(name).get();
     }
 

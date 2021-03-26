@@ -4,6 +4,7 @@ import aws.imgupload.imgupload.service.MetadataService;
 import aws.imgupload.imgupload.service.data.ImageMetadata;
 import aws.imgupload.imgupload.service.prod.awsdata.RegisterRecord;
 import aws.imgupload.imgupload.service.prod.awsdata.RegisterRecordInitializer;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.NoSuchElementException;
 
@@ -38,5 +39,13 @@ public class RDSMetadataService implements MetadataService {
     @Override
     public long fetchImageCount() {
         return registerRepository.count();
+    }
+
+    @Override
+    public ImageMetadata fetchRecordByIndex(long index) {
+        final var page = registerRepository.findAll(PageRequest.of(1,1));
+        final var record =  page.get().findFirst().get();
+
+        return new ImageMetadata(record.getFilename());
     }
 }
