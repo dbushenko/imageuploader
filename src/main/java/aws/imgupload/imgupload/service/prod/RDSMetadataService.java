@@ -43,8 +43,8 @@ public class RDSMetadataService implements MetadataService {
     }
 
     @Override
-    public ImageMetadata fetchRecordByIndex(long index) {
-        final var page = registerRepository.findAll(PageRequest.of(1,1));
+    public ImageMetadata fetchRecordByIndex(int index) {
+        final var page = registerRepository.findAll(PageRequest.of(index,1));
         final var record =  page.get().findFirst().get();
 
         return new ImageMetadata(record.getFilename());

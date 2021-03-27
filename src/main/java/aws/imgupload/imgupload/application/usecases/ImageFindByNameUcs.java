@@ -23,7 +23,7 @@ public class ImageFindByNameUcs implements HasFlows<byte[]> {
 
     @Override
     public byte[] mainFlow() throws IOException {
-        return storageService.findImageByName(name).get();
+        return storageService.findImageByName(name+".png").get();
     }
 
     @Override

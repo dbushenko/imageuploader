@@ -22,8 +22,8 @@ public class ImageFindRandomUcs implements HasFlows<byte[]> {
 
     @Override
     public byte[] mainFlow() throws IOException {
-        final var count = assertCount( metadataService.fetchImageCount() );
-        final var random = new Random().nextLong();
+        final var count = (int) assertCount( metadataService.fetchImageCount() );
+        final var random = new Random().nextInt();
         final var index = random % count;
         final var data = metadataService.fetchRecordByIndex(index);
 

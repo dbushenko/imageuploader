@@ -28,7 +28,7 @@ public class ConsoleMetadataService implements MetadataService {
     }
 
     @Override
-    public ImageMetadata fetchRecordByIndex(long index) {
+    public ImageMetadata fetchRecordByIndex(int index) {
         return new ImageMetadata("super-image");
     }
 }
