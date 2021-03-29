@@ -22,13 +22,15 @@ public class ProdConfiguration {
     private final String profile;
     private final String region;
     private final String topicArn;
+    private final String snsRegion;
 
-    public ProdConfiguration(@Value("${s3.bucket}") String bucket, @Value("${s3.profile}") String profile, @Value("${s3.region}") String region, RegisterRepository registerRepository, @Value("${sns.topicArn}") String topicArn) {
+    public ProdConfiguration(@Value("${s3.bucket}") String bucket, @Value("${s3.profile}") String profile, @Value("${s3.region}") String region, RegisterRepository registerRepository, @Value("${sns.topicArn}") String topicArn, @Value("${sns.region}") String snsRegion) {
         this.registerRepository = registerRepository;
         this.bucket = bucket;
         this.profile = profile;
         this.region = region;
         this.topicArn = topicArn;
+        this.snsRegion = snsRegion;
     }
 
     @Bean
@@ -38,6 +40,6 @@ public class ProdConfiguration {
     public StorageService storageService() { return new S3StorageService(bucket, profile, region); }
 
     @Bean
-    public SubscriptionService subscriptionService() { return new SnsSubscriptionService(topicArn, region); }
+    public SubscriptionService subscriptionService() { return new SnsSubscriptionService(topicArn, snsRegion, profile); }
 
 }

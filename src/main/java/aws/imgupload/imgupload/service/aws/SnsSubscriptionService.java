@@ -1,6 +1,7 @@
 package aws.imgupload.imgupload.service.aws;
 
 import aws.imgupload.imgupload.service.SubscriptionService;
+import software.amazon.awssdk.auth.credentials.ProfileCredentialsProvider;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sns.SnsClient;
 import software.amazon.awssdk.services.sns.model.PublishRequest;
@@ -12,18 +13,24 @@ import javax.annotation.PostConstruct;
 public class SnsSubscriptionService implements SubscriptionService {
     private final String topicArn;
     private final String region;
+    private final String profile;
 
     private SnsClient snsClient;
 
-    public SnsSubscriptionService(String topicArn, String region) {
+    public SnsSubscriptionService(String topicArn, String region, String profile) {
         this.topicArn = topicArn;
         this.region = region;
+        this.profile = profile;
     }
 
     @PostConstruct
     public void initialize() {
         snsClient =
             SnsClient.builder()
+                    .credentialsProvider( ProfileCredentialsProvider
+                            .builder()
+                            .profileName(profile)
+                            .build() )
                      .region(Region.of(region))
                      .build();
     }
