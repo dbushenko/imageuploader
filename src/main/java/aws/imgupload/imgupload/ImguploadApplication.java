@@ -37,6 +37,7 @@ public class ImguploadApplication extends WebSecurityConfigurerAdapter {
 
 		http
 			.authorizeRequests()
+			.antMatchers("/subscribe").permitAll()
 			.anyRequest()
 			.authenticated()
 		.and()

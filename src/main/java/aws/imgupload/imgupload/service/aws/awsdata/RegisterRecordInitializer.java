@@ -1,4 +1,4 @@
-package aws.imgupload.imgupload.service.prod.awsdata;
+package aws.imgupload.imgupload.service.aws.awsdata;
 
 import aws.imgupload.imgupload.service.data.ImageMetadata;
 

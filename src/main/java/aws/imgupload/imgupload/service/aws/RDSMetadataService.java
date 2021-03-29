@@ -1,9 +1,9 @@
-package aws.imgupload.imgupload.service.prod;
+package aws.imgupload.imgupload.service.aws;
 
 import aws.imgupload.imgupload.service.MetadataService;
 import aws.imgupload.imgupload.service.data.ImageMetadata;
-import aws.imgupload.imgupload.service.prod.awsdata.RegisterRecord;
-import aws.imgupload.imgupload.service.prod.awsdata.RegisterRecordInitializer;
+import aws.imgupload.imgupload.service.aws.awsdata.RegisterRecord;
+import aws.imgupload.imgupload.service.aws.awsdata.RegisterRecordInitializer;
 import org.springframework.data.domain.PageRequest;
 
 import java.util.NoSuchElementException;

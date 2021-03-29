@@ -1,11 +1,11 @@
-package aws.imgupload.imgupload.service.localdev;
+package aws.imgupload.imgupload.service.console;
 
 import aws.imgupload.imgupload.service.StorageService;
 import aws.imgupload.imgupload.service.data.ImageMetadata;
 
 import java.util.Optional;
 
-public class FileStorageService implements StorageService {
+public class ConsoleStorageService implements StorageService {
 
     @Override
     public void store(ImageMetadata metadata, byte[] data) {
